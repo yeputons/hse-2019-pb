@@ -30,6 +30,8 @@ x = range(1, 10000000000)
 print(x)
 print(x[1:10])
 print(list(x[1:10]))
+for i in x:
+    print(i)
 
 # There are generator expressions
 x = (x + 2 for x in range(10))
