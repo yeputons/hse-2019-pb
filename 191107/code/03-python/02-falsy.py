@@ -19,8 +19,8 @@ if x:  # Good
     print(x[0])
 
 # Consequence: and/or returns either argument, not True/False
-# x and y = x if x else y
-# x or y = y if x else x
+# x and y = y if x else x
+# x or y = x if x else y
 
 # Standard idiom for adding default value for an 'optional' variable:
 a = a or 'default'

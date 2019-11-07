@@ -5,6 +5,7 @@ i += 1
 print('Hello World')  # Careful	 with Cyrillic
 
 name = input("Your name> ")  # Both quotes work, see codestyle, I like singles
+print('Hello, ' + name + '!')
 print(f'Hello, {name}!')
 
 # For loop iterates over a 'list' or 'collection',

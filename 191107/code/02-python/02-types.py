@@ -8,7 +8,6 @@ print(type(0))
 print(type('0'))
 
 # print('c' - 'a')
-# print('c' - 'a')
 print(ord('c') - ord('a'))
 
 print(int('20') - int('10'))

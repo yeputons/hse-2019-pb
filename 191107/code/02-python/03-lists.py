@@ -40,6 +40,7 @@ print(list(x))
 print(list(x))
 print(x + 2 for x in range(10))  # Syntax sugar
 print([x + 2 for x in range(10)])  # List comprehension
+print(len(x + 2 for x in range(10)))  # Errror
 
 # Strings
 print('foo')
