@@ -58,7 +58,7 @@ int add(int a, int b) {
 int x = add(2, 2);
 \end{minted}
 	\begin{itemize}
-	\item	Имеет смысл только если в языке есть выражения
+	\item Имеет смысл только если в языке есть выражения
 	\item
 		В разных языках параметры и возвращаемые значения
 		реализованы по-разному $\Rightarrow$ разные ограничения
@@ -66,29 +66,6 @@ int x = add(2, 2);
 		В языках вроде C/C++/Rust есть ещё разные \textit{конвенции вызовов}
 		о том, как передавать параметры на ассемблере
 	\end{itemize}
-\end{frame}
-
-\begin{frame}[t,fragile]{Python: множественный возврат}
-	Идиома: возвращаем кортеж, а на месте распаковываем:
-\begin{minted}{python}
-def partition(arr, middle):
-    return ([x for x in arr if x < middle],
-            [x for x in arr if x >= middle])
-left, right = partition([1, 2, 3, 4, 1], 3)
-\end{minted}
-
-	Скобки можно опустить:
-\begin{minted}{python}
-def divmod(a, b):  # Встроенная функция
-    return a // b, a % b
-q, r = divmod(10, 3)
-\end{minted}
-
-	Осторожно: если значений много, то легко перепутать порядок или типы;
-	для сложных вещей лучше вернуть объект (будут дальше)
-
-	В C++ тоже есть (см. \verb`pair<iterator, bool> std::map::insert`),
-	но не так популярно.
 \end{frame}
 
 \begin{frame}{Когда выделять процедуру}
@@ -115,11 +92,41 @@ q, r = divmod(10, 3)
 	\item
 		Что случится, если в процедуре баг и повлияет на всю программу?
 	\end{enumerate}
-
-	На демо посмотрим
 \end{frame}
 
-\begin{frame}{Время для демо!}
+\begin{frame}{Пример}
+	Программа должна для каждого аргумента вывести сумму чисел.
+\begin{minted}{python}
+from typing import List
+import sys
+def main(argv: List[str]):
+    s = 0
+    for arg in argv:
+        for val in arg.split(','):
+            s += int(val)
+        print(s)
+if __name__ == '__main__':
+    main(sys.argv[1:])
+\end{minted}
+	Где ошибка?
+\end{frame}
+
+\begin{frame}{Переписанный пример}
+\begin{minted}{python}
+from typing import List
+import sys
+def process(arg: str):
+    s = 0
+    for val in arg.split(','):
+        s += int(val)
+    print(s)
+def main(argv: List[str]):
+    for arg in argv:
+        process(arg)
+if __name__ == '__main__':
+    main(sys.argv[1:])
+\end{minted}
+	Теперь чисто синтаксически нельзя перепутать.
 \end{frame}
 
 \begin{frame}{Стандартные куски}
