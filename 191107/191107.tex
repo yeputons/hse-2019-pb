@@ -1,0 +1,43 @@
+\documentclass[utf8,xcolor=table]{beamer}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+%\usepackage{tikz-uml}
+\usepackage{minted}
+\usepackage{cmap}
+
+\hypersetup{colorlinks,linkcolor=blue,urlcolor=blue}
+
+\mode<presentation>{
+	\usetheme{CambridgeUS}
+}
+
+\renewcommand{\t}[1]{\ifmmode{\mathtt{#1}}\else{\texttt{#1}}\fi}
+\newcommand{\svgimg}[1]{
+  \begin{center}
+	\includegraphics[scale=1]{#1.pdf}
+  \end{center}
+}
+
+\title{Структурное программирование}
+\author{Егор Суворов}
+\institute[НИУ ВШЭ]{Курс <<Основы программирования>>}
+\date[07.11.2019]{Четверг, 7 ноября 2019 года}
+
+\setlength{\arrayrulewidth}{1pt}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\input{00-org}
+\input{01-paradigms}
+\input{02-python}
+\input{03-assignment}
+\input{04-procedures}
+\input{05-python}
+
+\end{document}
