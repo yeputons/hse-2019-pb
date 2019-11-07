@@ -28,7 +28,3 @@ print(do_something)
 x = 'foo' if do_something else 100  # Impossible in strong typing
 print(type(x))
 print(str(x) + 'bar')
-
-print(f'2 + 2 = {2 + 2}')
-x = 2 + 2
-print(f'2 + 2 = {x}')
