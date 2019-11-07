@@ -42,3 +42,16 @@
 		\end{itemize}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}[t,fragile]{Пример автотеста}
+\begin{minted}{python}
+def test_process():
+    assert process('1,2,3') == 6
+    assert process('4,5,6') == 15
+\end{minted}
+
+	Для этого надо, чтобы \t{process} не выводила результат на экран,
+	а возвращало.
+
+	Как раз разделение вывода от обработки.
+\end{frame}
