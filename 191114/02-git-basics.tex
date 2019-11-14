@@ -79,7 +79,7 @@ GitHub:
 \end{center}
 \end{frame}
 
-\begin{frame}{Состояния файлов}
+\begin{frame}[t]{Состояния файлов}
 \verb~git status~
 \begin{center}
 \includegraphics[width=\textwidth,keepaspectratio]{lifecycle.png}
@@ -90,8 +90,24 @@ GitHub:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Слияние веток}
+\begin{frame}[t]{Слияние веток}
 \begin{center}
 \includegraphics[width=\textwidth,keepaspectratio]{basic-merging-1.png}
 \end{center}
+\begin{itemize}
+\item Git попытается автоматически догадаться, как склеить изменения.
+\item Иногда (редко) догадывается неверно.
+\item Гораздо чаще случаются \textit{конфликты} в одном файле.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Несколько remote}
+Например, оригинальный репозиторий (upstream) и ваш форк (origin)
+\begin{enumerate}
+\item Подтянули изменения из upstream и origin
+\item Поставили локальную ветку на ветку из origin
+\item Добавили в локальную ветку изменения из upstream
+\item Обновили ветку на origin
+\end{enumerate}
+Напрямую обновить origin из upstream нельзя!
 \end{frame}

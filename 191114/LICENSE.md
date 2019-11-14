@@ -13,4 +13,4 @@
 * `basic-merging-1.png`
   * Licensed under CC BY-NC-SA 3.0: https://creativecommons.org/licenses/by-nc-sa/3.0/
   * Originally from https://git-scm.com/book/ru/v2/%D0%92%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-Git-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B2%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D1%8F
-  * No changes were made.
+  * The image was cropped.
