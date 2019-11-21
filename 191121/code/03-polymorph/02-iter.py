@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-
-my_range = range(5)
-print(my_range)
-for i in my_range:
-    print(i)
+my_range = range(5, 10)
 
 iterator = iter(my_range)
 # iterator = my_range.__iter__() # Так не пишем, пишем iter()

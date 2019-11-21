@@ -6,4 +6,4 @@ def create_adder(a):
 
 
 x = create_adder(3)
-x(4)
+print(x(4))

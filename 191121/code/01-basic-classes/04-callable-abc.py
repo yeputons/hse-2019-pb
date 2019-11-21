@@ -6,9 +6,11 @@ class Adder(Callable):
     def __init__(self, a: int) -> None:
         self.a = a
 
-    def __call__(self, b: int) -> None:
-        print(f'a + b = {self.a + b}')
+    def __call__(self, b: int) -> int:
+        return a + b
 
 
 x = Adder(3)
-x(4)
+y = Adder(10)
+print(x(4))
+print(y(4))
