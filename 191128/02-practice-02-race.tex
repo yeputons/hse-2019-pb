@@ -4,16 +4,10 @@
 	\tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-\begin{frame}{Упражнение}
-	\begin{enumerate}
-		\item Возьмите \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/03-writeln-single.cpp}{код}.
-		\item При желании можете скачать \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/Makefile}{Makefile}.
-		\item Убедитесь, что на экран выводится строка.
-		\item Запустите второй поток, который выводит на экран другую строку.
-		\item Найдите место, где первая строка сменяется второй.
-		\item Удивитесь.
-	\end{enumerate}
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/04-writeln-race.cpp}{Код}
+\begin{frame}{Демо гонки-1}
+	Демо: \texttt{03-writeln-single}, \texttt{04-writeln-single}
+
+	Valgrind не помогает.
 \end{frame}
 
 \begin{frame}{Объяснение}
@@ -43,22 +37,12 @@
 	\svgimg{race-writeln-bad}
 \end{frame}
 
-\begin{frame}{Упражнение}
-	\begin{enumerate}
-		\item Сделайте счётчик:
-			\begin{itemize}
-				\item Второй поток в цикле увеличивает глобальную переменную \t{data} до $N = 5 \cdot 10^8$.
-				\item Основной поток (\t{main}) выводит на экран текущее значение \t{data} в цикле $M = 1000$ раз.
-				\item Отключите оптимизации компилятора (ключ \t{-O2} или схожий не нужен).
-			\end{itemize}
-		\item Убедитесь, что программа выводит на экране увеличивающиеся значения, а в конце "--- $N$.
-		\item Поиграйте со значением $M$, чтобы убедиться, что в конце всегда выводится $N$.
-		\item Сделайте так, чтобы основной поток выводил на экран только чётные значения \t{data} и увеличьте $M$.
-		\item Что теперь происходит?
-	\end{enumerate}
-	Мой код:
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/05-counter.cpp}{счётчик},
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/06-even-counter.cpp}{чётный счётчик}.
+\begin{frame}{Демо гонки-2}
+	Демо: \texttt{05-counter.cpp}, \texttt{06-even-counter.cpp}
+
+	Важно: оптимизации отключены! (почему "--- на следующей лекции).
+
+	Valgrind не помогает.
 \end{frame}
 
 \begin{frame}{Объяснение}
@@ -74,6 +58,7 @@
 		\item Можно на каждой итерации записать значение \t{data} в локальную \t{data\_snapshot} (снимок) и работать с ним.
 		\item Работает только если чтение одной переменной атомарно.
 		\item Не работает, если у нас много переменных мы не можем сделать атомарный снимок (классическая задача).
+		\item Демо: \texttt{07-even-counter-snapshot.cpp}
 	\end{itemize}
 \end{frame}
 
@@ -84,16 +69,10 @@
 \end{frame}
 
 \subsection{Гонка данных}
-\begin{frame}{Упражнение}
-	\begin{enumerate}
-		\item Добавьте снятие снимков в свой счётчик.
-		\item Убедитесь, что все значения теперь чётные.
-		\item Запустите второй поток-счётчик, который тоже увеличивает \t{data}.
-		\item Что произошло?
-	\end{enumerate}
-	Мой код:
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/07-even-counter-snapshot.cpp}{счётчик со снимками},
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/08-two-threads.cpp}{два счётчика}.
+\begin{frame}{Демо гонки-3}
+	Демо: \texttt{08-two-threads.cpp}
+
+	Valgrind, внезапно, помогает (как и thread sanitizer).
 \end{frame}
 
 \begin{frame}[fragile]{Состояние гонки: повезло}
@@ -108,6 +87,8 @@
 	\begin{center}
 		\includegraphics[scale=0.4]{absolutely-nothing.jpg}
 	\end{center}
+
+	Даже в Python или Java.
 \end{frame}
 
 \begin{frame}{Полезные советы}

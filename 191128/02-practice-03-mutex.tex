@@ -24,52 +24,15 @@
 \end{frame}
 
 \begin{frame}[fragile]{Некорректный пример}
-\begin{minted}{cpp}
-int data;
-void* worker(void*) {
-    pthread_mutex_t m;
-    pthread_mutex_init(&m, NULL);
-    for (int i = 0; i < N; i++) {
-        pthread_mutex_lock(&m);
-        data++;
-        pthread_mutex_unlock(&m);
-    }
-    pthread_mutex_destroy(&m);
-    return NULL;
-}
-\end{minted}
-\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/09-two-threads-bad-mutex.cpp}{Код}.
+	Демо: \texttt{09-two-threads-bad-mutex.cpp}
 \end{frame}
 
 \begin{frame}[fragile]{Корректный пример}
-\begin{minted}{cpp}
-int data;
-pthread_mutex_t m;
-void* worker(void*) {
-    for (int i = 0; i < N; i++) {
-        pthread_mutex_lock(&m);
-        data++;
-        pthread_mutex_unlock(&m);
-    }
-    return NULL;
-}
-// ...
-  pthread_mutex_init(&m, NULL);
-// ...
-  pthread_mutex_destroy(&m);
-// ...
-\end{minted}
+	Демо: \texttt{10-two-threads-good-mutex.cpp}
 \end{frame}
 
-\begin{frame}{Упражнение}
-	\begin{enumerate}
-		\item Добавьте мьютекс в \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/08-two-threads.cpp}{двойной счётчик}.
-		\item Уменьшите $N$ на несколько порядков (мьютексы сильно замедляют программу).
-		\item Убедитесь, что всегда выводится $2N$.
-		\item Добавьте мьютекс в \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/04-writeln-race.cpp}{writeln}.
-	\end{enumerate}
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/10-two-threads-good-mutex.cpp}{Исправленный двойной счётчик},
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/11-writeln-mutex.cpp}{исправленный writeln}.
+\begin{frame}{Исправление writeln}
+	Демо: \texttt{11-writeln-mutex.cpp}
 \end{frame}
 
 \begin{frame}[fragile]{Блокировка}

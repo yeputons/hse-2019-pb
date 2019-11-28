@@ -16,26 +16,6 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Пример кода}
-\begin{minted}{cpp}
-void* worker(void* arg) {
-    printf("Hello from thread! arg=%d\n", *(int*)arg);
-    *(int*)arg += 10;
-    return arg;
-}
-int main() {
-    pthread_t id;
-    int data = 1234;
-    assert(pthread_create(&id, NULL, worker, &data) == 0);
-    void* retval;
-    assert(pthread_join(id, &retval) == 0);
-    assert(retval == &data);
-    printf("data is %d\n", data);
-    return 0;
-}
-\end{minted}
-\end{frame}
-
 \begin{frame}[fragile]{Один поток}
 	\svgimg{simple-one-thread}
 \end{frame}
@@ -44,17 +24,8 @@ int main() {
 	\svgimg{simple-two-threads}
 \end{frame}
 
-\begin{frame}[fragile]{Упражнение: сборка кода}
-	\begin{enumerate}
-		\item Качаем решение с \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/01-simple.cpp}{GitHub}.
-		\item \texttt{g++ 01-simple.c -o 01-simple -pthread -Wall -Wextra -Werror} или аналог в вашей IDE.
-		\item \texttt{./01-simple}
-		\item Ожидаемый вывод:
-\begin{verbatim}
-Hello from thread! arg=1234
-data is 1244
-\end{verbatim}
-	\end{enumerate}
+\begin{frame}[fragile]{Пример кода}
+	Демо \texttt{01-simple.cpp}
 \end{frame}
 
 \begin{frame}{Как живут потоки}
@@ -119,15 +90,10 @@ data is 1244
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Упражнение}
-	\begin{enumerate}
-		\item Измените код так, чтобы \t{data} стала глобальной переменной (после этого \t{arg} не нужен).
-		\item Вызовите \t{pthread\_detach} на втором потоке после запуска.
-		\item Убедитесь, что программа упала.
-		\item Уберите вызов \t{pthread\_join} и \t{printf} из основного потока.
-		\item Убедитесь, что второй поток не всегда успевает отработать.
-		\item Добавьте вызов \t{pthread\_exit} в \t{main}.
-		\item Убедитесь, что после приложение перестало закрываться до окончания работы всех потоков.
-	\end{enumerate}
-	\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/02-detached.cpp}{Код}
+\begin{frame}{Демо detached}
+	Демо \texttt{02-detached.cpp}
+	% data стала глобальной, arg не нужен
+	% pthread_detach (падает)
+	% убираем pthread_join (не всегда успевает отработать)
+	% pthread_exit в main (теперь окей)
 \end{frame}

@@ -52,6 +52,7 @@ for (int x = 1; x != 0; x = f(x)); steps++;
 				\item OpenMP "--- высокоуровневое распараллеливание для C/C++/Fortran.
 				\item CUDA "--- вычисления на графических картах (ядер тысячи, но они умеют меньше, чем CPU).
 			\end{itemize}
+		\item Потоки уровня ОС "--- штука \textit{очень} дорогая и тяжёлая.
 	\end{itemize}
 \end{frame}
 
@@ -91,7 +92,9 @@ int main() {
 \end{minted}
 \end{frame}
 
-\begin{frame}{Producer-Consumer}
+\begin{frame}{Типичный псевдокод-2(б)}
+	Producer-consumer:
+
 	\svgimg{prod-cons}
 \end{frame}
 
