@@ -10,6 +10,14 @@
 	Valgrind не помогает.
 \end{frame}
 
+\begin{frame}{Состояние гонки: повезло}
+	\svgimg{race-writeln-ok}
+\end{frame}
+
+\begin{frame}{Состояние гонки: не повезло}
+	\svgimg{race-writeln-bad}
+\end{frame}
+
 \begin{frame}{Объяснение}
 	\begin{itemize}
 		\item
@@ -27,14 +35,6 @@
 		\item
 			\t{writeln} выше не атомарна.
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{Состояние гонки: повезло}
-	\svgimg{race-writeln-ok}
-\end{frame}
-
-\begin{frame}{Состояние гонки: не повезло}
-	\svgimg{race-writeln-bad}
 \end{frame}
 
 \begin{frame}{Демо гонки-2}

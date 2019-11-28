@@ -46,6 +46,14 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Демо detached}
+	Демо \texttt{02-detached.cpp}
+	% data стала глобальной, arg не нужен
+	% pthread_detach (падает)
+	% убираем pthread_join (не всегда успевает отработать)
+	% pthread_exit в main (теперь окей)
+\end{frame}
+
 \begin{frame}[t]{Несколько замечаний про pthread}
 	Про потоки и pthread:
 	\begin{itemize}
@@ -88,12 +96,4 @@
 				\item Если кто-то может спросить состояние потока "--- у него есть указатель, значит, ресурсы потока ещё не освобождены.
 			\end{itemize}
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{Демо detached}
-	Демо \texttt{02-detached.cpp}
-	% data стала глобальной, arg не нужен
-	% pthread_detach (падает)
-	% убираем pthread_join (не всегда успевает отработать)
-	% pthread_exit в main (теперь окей)
 \end{frame}
