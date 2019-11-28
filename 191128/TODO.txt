@@ -1,0 +1,1 @@
+sources: расписать точный план для перехода 01-simple.cpp --> 02-detached.cpp
