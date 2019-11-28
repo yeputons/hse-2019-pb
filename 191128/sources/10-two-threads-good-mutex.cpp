@@ -23,14 +23,16 @@ int main() {
     assert(pthread_create(&id1, NULL, worker, NULL) == 0);
     assert(pthread_create(&id2, NULL, worker, NULL) == 0);
     for (int i = 0; i < M; i++) {
+        pthread_mutex_lock(&m);
         int data_snapshot = data;
+        pthread_mutex_unlock(&m);
         if (data_snapshot % 2 == 0) {
             printf("data is %d (in progress)\n", data_snapshot);
             assert(data_snapshot % 2 == 0);
         }
     }
-    assert(pthread_join(id1, NULL) == 0);
     assert(pthread_join(id2, NULL) == 0);
+    assert(pthread_join(id1, NULL) == 0);
     pthread_mutex_destroy(&m);
     printf("data is %d\n", data);
     return 0;

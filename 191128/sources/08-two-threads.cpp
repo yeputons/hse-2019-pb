@@ -25,8 +25,8 @@ int main() {
             assert(data_snapshot % 2 == 0);
         }
     }
-    assert(pthread_join(id1, NULL) == 0);
     assert(pthread_join(id2, NULL) == 0);
+    assert(pthread_join(id1, NULL) == 0);
     printf("data is %d\n", data);
     return 0;
 }
