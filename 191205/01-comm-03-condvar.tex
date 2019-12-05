@@ -141,7 +141,7 @@ pthread_cond_t cond; // GUARDED_BY(m)
 bool some_condition; // GUARDED_BY(m)
 // ...
 pthread_mutex_lock(&m);
-// Следующие две строки в любом порядке.
+// Следующие две строки в любом порядке, но лучше так.
 some_condition = true;
 pthread_cond_signal(&cond);
 pthread_mutex_unlock(&m);
@@ -164,13 +164,12 @@ pthread_mutex_unlock(&m);
 \end{minted}
 \end{frame}
 
-\begin{frame}{Упражнение}
+\begin{frame}{Демо}
+	См. \t{03-prod-cons.cpp}
 	\begin{enumerate}
-		\item Возьмите реализацию с producer-consumer с \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/14-prod-cons.cpp}{GitHub}.
-		\item Запустите и убедитесь, что на каждую введённую строчу отзывается второй поток: сначала сразу, а потом через две секунды.
-		\item Убедитесь, что если во время ожидания второго потока ввести новую строчку, то на неё второй поток тоже среагирует.
-		\item Убедитесь, что если во время ожидания ввести две новых строчки, то будет обработана только последняя.
-		\item Задайте все вопросы по коду; поймите, зачем нужна и что делает каждая строчка.
+		\item На каждую введённую строчу отзывается второй поток: сначала сразу, а потом через две секунды.
+		\item Если во время ожидания второго потока ввести новую строчку, то на неё второй поток тоже среагирует.
+		\item Если во время ожидания ввести две новых строчки, то будет обработана только последняя.
 		\item Есть ли проблемы в этом коде?
 	\end{enumerate}
 \end{frame}
@@ -196,19 +195,13 @@ while (true) {
 	\begin{itemize}
 		\item \t{fgets} меняет буфер, который также читается из другого потока.
 		\item Значит, буфер должен быть защищён мьютексом на всех стадиях.
-		\item Если поменяем \t{fgets} и \t{pthread\_mutex\_lock} местами, то\only<1>{...}\only<2->{ будет deadlock: consumer не может читать данные, пока producer ждёт.}
-		\only<3->{
-		\item
-			Правильно сначала считать в локальную переменную, а потом скопировать в буфер.
-			\href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/15-prod-cons-fixed.cpp}{Код}.
-		}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[t,fragile]{Проблема-2}
-	Тут есть другая проблема (воспроизводится, например, под Linux):
+	Поменяем \t{fgets} и \t{pthread\_mutex\_lock} местами.
 \begin{minted}{cpp}
-while (true) {
+while (true) {  // Под Linux видно проблему
     pthread_mutex_lock(&m);
     fgets(str, sizeof str, stdin);
     str_available = true;

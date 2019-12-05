@@ -1,9 +1,5 @@
 \subsection{Простая реализация}
 
-\begin{frame}
-	\tableofcontents[currentsection,currentsubsection]
-\end{frame}
-
 \begin{frame}{Зачем}
 	Довольно часто потоки не совсем независимы, а хотят взаимодействовать между собой.
 
@@ -63,20 +59,18 @@ while (true) {
 \end{minted}
 \end{frame}
 
-\begin{frame}{Есть гонка}
-	\svgimg{queue-pop-race}
-\end{frame}
-
 \begin{frame}{Проблемы}
 	\begin{itemize}
-		\item Если несколько Consumer'ов, то есть race condition.
 		\item Consumer активно ждёт событие от первого и тратит процессорное время.
 		\item Даже если ничего не происходит, программа потребляет 100\% CPU.
 		\item Consumer постоянно берёт и отпускает mutex, мешая producer'у.
-		\pause
 		\item
 			А если добавить задержку в consumer (проверять только каждые $X$ мс),
 			то сильно увеличится задержка в обработке.
-		\item Без новых \textit{примитивов синхронизации} не обойтись.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Есть гонка}
+	\svgimg{queue-pop-race}
+	Без новых \textit{примитивов синхронизации} не обойтись.
 \end{frame}

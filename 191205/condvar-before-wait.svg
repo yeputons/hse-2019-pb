@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="02-condvar-02-condvar-03.svg">
+   sodipodi:docname="condvar-before-wait.svg">
   <defs
      id="defs4">
     <marker
@@ -268,7 +268,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="577.47915"
+     inkscape:cx="333.90772"
      inkscape:cy="371.79254"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -501,25 +501,29 @@
     <g
        id="g4363-2"
        transform="matrix(0.99769427,0,0,0.90305737,327.44515,398.31164)">
-      <rect
-         y="488.98315"
-         x="306.99918"
-         height="41.772186"
-         width="384.70734"
-         id="rect4798-0-3-89-4-9"
-         style="fill:#ffffff;fill-opacity:1;stroke:#808080;stroke-width:1.48092747;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text4794-0-7-9-5-0"
-         y="517.32819"
-         x="319.92572"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;line-height:125%;font-family:'CMU Typewriter Text';-inkscape-font-specification:'CMU Typewriter Text Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:31.60565948px;stroke:none;stroke-width:50;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           y="517.32819"
+      <g
+         id="g4341"
+         transform="translate(-11.843904,0)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#808080;stroke-width:1.48092747;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4798-0-3-89-4-9"
+           width="397.5918"
+           height="41.772186"
+           x="312.40085"
+           y="488.98315" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:25px;line-height:125%;font-family:'CMU Typewriter Text';-inkscape-font-specification:'CMU Typewriter Text Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            x="319.92572"
-           sodipodi:role="line"
-           id="tspan4280-3-8-1">if (!q.empty() { ... }</tspan></text>
+           y="517.32819"
+           id="text4794-0-7-9-5-0"
+           sodipodi:linespacing="125%"><tspan
+             id="tspan4280-3-8-1"
+             sodipodi:role="line"
+             x="319.92572"
+             y="517.32819"
+             style="font-size:31.60565948px;stroke:none;stroke-width:50;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">if (!q.empty()) { ... }</tspan></text>
+      </g>
     </g>
     <rect
        style="fill:#ff0101;fill-opacity:0.36078431;stroke:#808080;stroke-width:0.99999982;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"

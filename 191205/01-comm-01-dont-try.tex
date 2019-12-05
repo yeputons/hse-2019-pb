@@ -6,7 +6,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Загадка}
-	Что произойдёт при запуске \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/12-optimizer.cpp}{кода}?
+	Что произойдёт при запуске \t{01-optimizer.cpp}?
 	Предполагаем, что запись и чтение \t{int} атомарны.
 \begin{minted}{cpp}
 int data;
@@ -48,7 +48,7 @@ void* worker(void*) {
 \end{frame}
 
 \begin{frame}[fragile]{volatile}
-	Изменим \href{https://raw.githubusercontent.com/yeputons/spring-2019-paradigms/master/190410/sources/13-volatile.cpp}{код}:
+	Изменим на \t{02-volatile.cpp}:
 \begin{minted}{cpp}
 volatile int data;  // Обозначили переменную volatile.
 void* worker(void*) {
@@ -72,14 +72,16 @@ void* worker(void*) {
 	\begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
 		\centering
 \begin{minted}{cpp}
-int data, finished;
+int data;
+volatile bool finished;
 // ...
 data = 123;
 finished = 1;
 \end{minted}
 &
 \begin{minted}{cpp}
-int data, finished;
+int data;
+volatile bool finished;
 // ...
 finished = 1;
 data = 123;
@@ -137,6 +139,7 @@ started = true;
 m.lock();
 finished = true;
 m.unlock();
+
 // Thread 2
 m.lock();
 if (finished) {
@@ -156,17 +159,22 @@ finished1 = true;
 finished2 = true;
 // Thread 2
 m.lock(); m.unlock();
-if (finished2) {
-    assert(finished1);  // Непонятно, потому что reordering
-    assert(data > 0);   // Непонятно, потому что нет(?) happens-before
-    assert(started);    // Непонятно, потому что нет(?) happens-before
+if (finished2) { // UB
+    assert(finished1);  // Непонятно, UB/reordering
+    assert(data > 0);   // Непонятно, UB
+    assert(started);    // Непонятно, UB
 }
 \end{minted}
+	\begin{itemize}
+	\item Одна из критических секций \textit{произошла-до} другой.
+	\item Операция внутри потока \textit{происходит-до} другой.
+	\item Изменение и чтение \t{finished2} неупорядочены "--- UB.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Резюме}
 	\begin{itemize}
-		\item Если вы что-то не защитили мьютексом, можно огрести из-за reordering, даже если всё <<очевидно должно работать>>.
+		\item Если вы что-то не защитили мьютексом, можно огрести из-за reordering и UB, даже если всё <<очевидно должно работать>>.
 		\item Если всё защищено мьютексом и вы ничего не предполагаете о происходящем за пределами критических секций "--- не о чем беспокоиться.
 		\item Ничего сложнее <<взяли один глобальный мьютекс перед операцией, отпустили в конце>> обычно не требуется (в том числе в дз).
 		\item Любой сколько-нибудь более сложный контроль требует понимания модели памяти.
