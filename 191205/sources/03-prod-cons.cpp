@@ -47,8 +47,8 @@ int main() {
     pthread_t id1, id2;
     assert(pthread_create(&id1, NULL, producer, NULL) == 0);
     assert(pthread_create(&id2, NULL, consumer, NULL) == 0);
-    assert(pthread_join(id1, NULL) == 0);
     assert(pthread_join(id2, NULL) == 0);
+    assert(pthread_join(id1, NULL) == 0);
 
     pthread_cond_destroy(&cond);
     pthread_mutex_destroy(&m);
