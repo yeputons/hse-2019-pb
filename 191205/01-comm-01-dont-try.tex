@@ -71,9 +71,9 @@ void* worker(void*) {
 	Эквивалентны ли два куска кода?
 	\begin{tabular}{p{0.4\textwidth}p{0.4\textwidth}}
 		\centering
+% Переменные не volatile, хотим как раз показать reordering.
 \begin{minted}{cpp}
-int data;
-volatile bool finished;
+int data, finished;
 // ...
 data = 123;
 finished = 1;
@@ -81,7 +81,6 @@ finished = 1;
 &
 \begin{minted}{cpp}
 int data;
-volatile bool finished;
 // ...
 finished = 1;
 data = 123;
