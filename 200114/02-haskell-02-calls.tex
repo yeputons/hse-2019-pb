@@ -54,9 +54,22 @@ map (map (+10)) [[1, 2], [3, 4]]
 \begin{frame}[fragile]{Вызов функций}
 	Доллар "--- оператор вызова функций без скобок:
 \begin{minted}{haskell}
-($) :: (a -> b) -> a -> b
+($) :: (a -> b) -> a -> b  -- Можно определять свои операторы
 (*2) (2 + 2)
 (*2) $ 2 + 2
+\end{minted}
+
+	Можно поставить первый параметр слева от имени функции:
+\begin{minted}{haskell}
+gcd :: Int -> Int -> Int
+gcd 10 4  -- 2
+10 `gcd` 4  -- 2
+\end{minted}
+
+	Можно поменять параметры местами при помощи функции высшего порядка:
+\begin{minted}{haskell}
+revp = flip (++)
+"ab" `revp` "cd" -- "cdab"
 \end{minted}
 \end{frame}
 
