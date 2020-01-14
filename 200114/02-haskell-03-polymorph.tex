@@ -51,13 +51,14 @@
 
 \begin{frame}{Вывод типов}
 	Ваша задача "--- по определению функции вывести наиболее общий тип.
+	% Не использовать Int в примерах ниже, потому что Num.
 	\begin{tabular}{c|c}
 		\centering
 		Функция & Тип \\\hline
 		\t{foo x y = x y} & \pause \t{(a -> b) -> a -> b} \\\pause
 		\t{foo x y z = x y z} & \pause \t{(a -> b -> c) -> a -> b -> c} \\\pause
-		\t{foo x y z = (x y) + (x z)} & \pause \t{(a -> Int) -> a -> a -> Int} \\\pause
-		\t{foo x y = (x y) + y} & \pause \t{(Int -> Int) -> Int -> Int} \\\pause
+		\t{foo x y = (x y) ++ y} & \pause \t{([a] -> [a]) -> [a] -> [a]} \\\pause
+		\t{foo x y z = (x y) ++ (x z)} & \pause \t{(a -> [b]) -> a -> a -> [b]} \\\pause
 		\t{foo x y = (x y):y} & \pause \t{([a] -> a) -> [a] -> [a]} \\
 	\end{tabular}
 \end{frame}
