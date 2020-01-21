@@ -70,8 +70,10 @@ data PaymentMethod = BankCard String | Cash | Qiwi String
 	\begin{itemize}
 		\item \t{PaymentMethod} называется \textit{конструктором типа}.
 		\item \t{BankCard}, \t{Cash}, \t{Qiwi} называются <<конструкторами данных>>, являются теми самыми <<тэгами>>.
+		\item \verb`:t BankCard :: String -> PaymentMethod` "--- функция
 		\item Не путать с конструкторами в ООП!
 		\item И конструктор типа, и конструктор данных долнжы начинаться с большой буквы.
+			Функции "--- с маленькой.
 		\item Работает с pattern matching:
 \begin{minted}{haskell}
 to_string (BankCard num) = "BankCard " ++ num
